@@ -1,5 +1,11 @@
 # 01_Start_Django
 
+### 0. Index
+
+1. 
+
+---
+
 ### 1. Intro
 
 - framework
@@ -21,7 +27,7 @@
   - Client - 서비스를 요청하는 주체. (웹사용자의 인터넷 연결장치, 웹 브라우저)
     Server - 요청에 대해 서비스를 응답하는 주체. (웹페이지, 사이트, 앱 등을 저정하는 컴퓨터)
   
-  -  어떠한 자원(resource)를 요청(request)하는 쪽을 Client, 자원을 제공하는 쪽을 서버(Server)라고 함.
+  - 어떠한 자원(resource)를 요청(request)하는 쪽을 Client, 자원을 제공하는 쪽을 서버(Server)라고 함.
 
 - Web browser
   
@@ -123,6 +129,107 @@
   
   <img src="01_Start_Django_assets/2022-10-10-19-06-58-image.png" title="" alt="" width="133">
   
-  - admin.py :  
+  - admin.py :  관리자용 페이지 설정
+  - apps.py : 앱 정보가 작성된 곳, 별도의 추가 코드 x
+  - models.py :  애플리케이션에서 사용하는 Model을 정의하는 곳. (MTV 의  M)
+  - tests.py : 프로젝트의 데스트 코드 작성
+  - views.py : view함수 정의. (MTV의 V)
+
+- 애플리케이션 등록
+  
+  ```python
+  # settings.py
+  INSTALLED_APPS = [
+      'articles',
+      'django.contrib.admin',
+      'django.contrib.auth', 
+      ....
+  ]
+  ```
+  
+  - 프로젝트에서 앱사용을 위해선 반드시 리스트에 추가해야 한다.(반드시 생성 후 등록)
+
+<br>
+
+- Project  & Application
+  
+  - Project : 앱의 집합.
+  
+  - Application : 실제 요청 처리, 페이지를 보여주는 등 역할 담당 / 일반적으로 하나의 역할 및 기능 단위로 작성을 권장.
+
+- 데이터의 흐름 순서 (코드 작성 순서)
+  
+  <img src="01_Start_Django_assets/2022-10-10-22-56-24-image.png" title="" alt="" width="275">
+
+---
+
+### 4. Django_Template
+
+- "데이터 표현을 제어하는 도구이자 표현에 관련된 로직" (HTML 정적, 동적 컨테츠 삽입)
+
+- DTL (Django Template Language)
+  
+  - 프로그래밍적 로직 x 프레젠테이션을 포현하기 위한 것임을 명심.
+  
+  - | DTL Syntax  |                                                                                                                                      |
+    | ----------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+    | 1. Variable | {{ variable }}  dot(.)을 사용해 변수 속성 접근 가능 <br/>render() 세번째 인자로 {'key':value}와 같이 딕셔너리 형태로 넘겨주며, key에 해당하는 문자열이 template에서 사용 가능한 변수명. |
+    | 2. Fiters   | {{ variable\|filter }} 표시할 변수를 수정할 때 사용.                                                                                             |
+    | 3. Tags     | {% tag %}  제어흐름을 만드는 등 변수보다 복잡한 일들을 수행                                                                                               |
+    | 4. Comments | {% comment %} ..... {% endcomment %}  여러줄 주석                                                                                         |
+
+<br>
+
+- Template inheritance (템플릿 상속)
+  
+  1. 프로젝트 최상단 templates / base.html 부모 템플릿 생성 
+     
+     하위 탬플릿 재지정을 할 수 있는 블록을 정의
+     
+     ```html
+     {% block content %} {% endblock content %}
+     ```
+     
+     ```html
+     <!-- templates/base.html -->
+     <!DOCTYPE html>
+     <html lang="en">
+     <head>
+       ...
+       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">  <title>Document</title>
+     </head>
+     <body>
+       <div class="container">
+         {% block content %}
+         
+         {% endblock content %}
+       </div>
+       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+     </body>
+     </html>
+     ```
+  
+  2. 자식템플릿이 부모템플릿을 확장한다는 것을 알림.
+     
+     ```html
+     <!-- articles/templates/articles/base.html namespace는 추후 다룰 예-->
+     {% extends 'base.html' %}
+     
+     {% block content %}
+     
+     {% endblock content %}
+     ```
+  
+  3. 앱 안의 template디렉토리가 아닌 프로젝트 최상단의 templates 디렉토리 경로 추가하기.
+     
+     
+
+
+
+
+
+
+
+
 
 
