@@ -2,7 +2,8 @@
 
 ### 0. Index
 
-1. 
+1. [Intro](#-Intro)
+2. [Design_Pattern](#-Design_Pattern)
 
 ---
 
@@ -201,7 +202,7 @@
      <body>
        <div class="container">
          {% block content %}
-         
+     
          {% endblock content %}
        </div>
        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
@@ -221,15 +222,3 @@
      ```
   
   3. 앱 안의 template디렉토리가 아닌 프로젝트 최상단의 templates 디렉토리 경로 추가하기.
-     
-     
-
-
-
-
-
-
-
-
-
-
