@@ -2,8 +2,8 @@
 
 ### 0. Index
 
-1. [Intro](#1.-Intro)
-2. [Design_Pattern](#2.-Design_Pattern)
+[1. Intro](#1.-Intro)
+[2. Design_Pattern](#-2.-Design_Pattern)
 
 ---
 
